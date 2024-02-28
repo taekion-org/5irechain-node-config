@@ -1,0 +1,35 @@
+version: "3.2"
+
+volumes:
+  5irechain-data:
+    external: true
+  #5irechain-secrets:
+  #  external: true
+
+services:
+  node:
+    container_name: 5irechain_node
+
+    image: 5irechain/5ire-thunder-node:0.12
+
+    ports:
+      - 30333:30333
+      - 9933:9933
+      - 9944:9944
+
+    volumes:
+      - 5irechain-data:/5ire/data
+
+    entrypoint: >
+      /5ire/5irechain
+      --port 30333
+      --no-telemetry
+      --base-path /5ire/data
+      --keystore-path /5ire/data
+      --node-key-file /5ire/secrets/node.key
+      --chain /5ire/thunder-chain-spec.json
+      --bootnodes /ip4/13.215.176.156/tcp/30333/ws/p2p/12D3KooWSCPiw5WquLQ1rZCbVUU8U95tgGU55EEuRZryxVJZyB7a
+      --pruning archive
+      --ws-external
+      --rpc-external
+      --rpc-cors all
