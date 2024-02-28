@@ -3,8 +3,6 @@ version: "3.2"
 volumes:
   5irechain-data:
     external: true
-  #5irechain-secrets:
-  #  external: true
 
 services:
   node:
