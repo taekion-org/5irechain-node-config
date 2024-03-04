@@ -32,6 +32,7 @@ services:
       --rpc-external
       --rpc-cors all
       --rpc-methods Unsafe
+      --validator
 
   proxy:
     container_name: 5irechain_proxy
